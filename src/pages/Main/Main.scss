@@ -1,0 +1,156 @@
+.main-page {
+  $root: &;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__btn {
+    cursor: pointer;
+    border: 1px solid #000;
+    border-radius: 0;
+    padding: 6px 10px;
+    font: inherit;
+    font-weight: bold;
+    color: #000;
+    background-color: #fff;
+    transition-property: background-color, color;
+    transition-duration: 0.3s;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover {
+      color: #fff;
+      background-color: #000;
+
+      #{$root}__btn-label {
+        &::before {
+          background-color: #fff;
+        }
+
+        &::after {
+          border-color: #fff;
+        }
+      }
+    }
+
+    &:focus,
+    &:active {
+      outline: none;
+    }
+
+    &_play {
+      &:hover {
+        color: limegreen;
+      }
+    }
+
+    &_pause {
+      &:hover {
+        color: darkorange;
+      }
+    }
+  }
+
+  &__btn-label {
+    font: inherit;
+    position: relative;
+
+    &_prev {
+      padding-left: 18px;
+
+      &::before,
+      &::after {
+        left: 0;
+      }
+
+      &::after {
+        transform: translateY(-50%) rotate(45deg);
+      }
+    }
+
+    &_next {
+      padding-right: 18px;
+
+      &::before,
+      &::after {
+        right: 0;
+      }
+
+      &::after {
+        transform: translateY(-50%) rotate(225deg);
+      }
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+    }
+
+    &::before {
+      transform: translateY(-50%);
+      width: 10px;
+      height: 1px;
+      background-color: #000;
+      transition: background-color 0.3s;
+    }
+
+    &::after {
+      width: 5px;
+      height: 5px;
+      border-left: 1px solid #000;
+      border-bottom: 1px solid #000;
+      transition: border-color 0.3s;
+    }
+  }
+
+  &__title {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  &__row {
+    display: flex;
+    margin-bottom: 10px;
+
+    #{$root}__btn {
+      margin: 0 5px;
+    }
+  }
+
+  &__field {
+    display: grid;
+    grid-gap: 5px;
+  }
+
+  &__cell {
+    height: 18px;
+    background: #ccc;
+    cursor: pointer;
+
+    &_alive {
+      background: black;
+    }
+  }
+
+  &__field-controls {
+    display: flex;
+    justify-content: space-between;
+
+    #{$root}__btn {
+      margin: 10px 0;
+    }
+  }
+
+  &__field-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
